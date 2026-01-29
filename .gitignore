@@ -22,4 +22,5 @@ notebooks/
 # macOS system file
 .DS_Store
 
+# create a subset of data for training
 create_train_data.py
