@@ -1,0 +1,73 @@
+# RETAIL FORECASTING PIPELINE CONFIGURATION
+
+
+# DATA SETTINGS
+data:
+  target_variable: Sales              # Column name to forecast
+  timestamp_column: Date              # Date/timestamp column
+  item_id_column: Store               # Store/item identifier column
+  
+# FORECAST SETTINGS
+forecast:
+  frequency: D                        # D=daily, W=weekly, M=monthly
+  horizon: 3                          # Number of periods ahead to forecast
+  validation_days: 3                  # Days to use for validation
+
+# MODEL SETTINGS
+model:
+  # NEW: Main model behavior
+  #   traditional       -> train a model and load it later
+  #   chronos_zero_shot -> Chronos-2 zero-shot style
+  #   chronos_finetune  -> (future use)
+  mode: chronos_zero_shot                   # <<< DEFAULT: TRADITIONAL RUN
+  chronos_preset: chronos2_small      # chronos2_small, chronos2, chronos2_ensemble
+  
+  # LEGACY / PIPELINE-LEVEL ZERO-SHOT FLAG
+  # Luigi will interpret this to decide whether to skip TrainTask.
+  # Use strings "yes"/"no" (they get normalized to booleans in code).
+  zero_shot: "yes"                     # "yes" or "no"
+  zero_shot_model: chronos2_small     # chronos2_small, chronos2, chronos-t5-tiny, small, base, large
+  
+  eval_metric: MAPE                   # MASE, MAE, RMSE, MAPE
+  
+# TRAINING SETTINGS (ignored if zero_shot="yes")
+training:
+  time_limit: 600                     # Training time in seconds
+  presets: medium_quality             # fast_training, medium_quality, high_quality, best_quality
+  num_stores: null                    # Number of stores to train on (null = all)
+
+# PIPELINE MODE
+pipeline:
+  mode: quick                    # quick, medium, production
+  
+# MODE CONFIGURATIONS (override settings above)
+modes:
+  quick:
+    training:
+      num_stores: 3
+      time_limit: 120
+      presets: fast_training
+    
+  medium:
+    training:
+      num_stores: 10
+      time_limit: 600
+      presets: medium_quality
+    
+  production:
+    training:
+      num_stores: null
+      time_limit: 1800
+      presets: high_quality
+    forecast:
+      validation_days: 14
+
+# MLFLOW SETTINGS
+mlflow:
+  experiment_name: rossmann-forecasting
+  
+# OUTPUT SETTINGS
+output:
+  predictions_dir: outputs
+  models_dir: models
+  luigi_dir: luigi_outputs

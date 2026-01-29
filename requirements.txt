@@ -1,0 +1,22 @@
+# Core ML Framework
+autogluon==1.5.1b20260117
+
+# MLOps Tools
+mlflow
+luigi==3.5.0
+
+# Data Processing
+pandas==2.1.4
+numpy
+scikit-learn
+
+# Utilities
+python-dotenv==1.0.0
+pyyaml==6.0.1
+
+# Visualization (optional, for MLflow artifacts)
+matplotlib==3.8.2
+seaborn==0.13.0
+
+# Development
+jupyter==1.0.0

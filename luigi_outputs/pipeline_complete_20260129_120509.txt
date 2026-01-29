@@ -1,0 +1,3 @@
+Pipeline completed successfully! (ZERO-SHOT mode)
+Run ID: 20260129_120509
+Predictions: /Users/nikkitharamesh/Desktop/test_metrics/timeseries-forecasting-mlops/outputs/predictions_20260129_120518.csv

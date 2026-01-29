@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+venv/
+.env/
+.venv/
+
+# Data / models / outputs
+data/
+outputs/
+models/
+mlruns/
+AutogluonModels/
+
+# VS Code
+.vscode/
+
+# macOS system file
+.DS_Store
+
+create_train_data.py
