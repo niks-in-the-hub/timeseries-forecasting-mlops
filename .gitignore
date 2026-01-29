@@ -14,6 +14,7 @@ outputs/
 models/
 mlruns/
 AutogluonModels/
+notebooks/
 
 # VS Code
 .vscode/
