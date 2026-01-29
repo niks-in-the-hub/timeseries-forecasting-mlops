@@ -3,7 +3,7 @@
 
 This repository implements a **production-ready, config-driven time series forecasting pipeline** designed for enterprise use cases. It supports both **traditional model training** and **zero-shot forecasting** using foundation models, with full experiment tracking and deterministic orchestration.
 
-Blog: [Forecasting at Scale With Foundation Models: A Practical Guide](https://medium.com/@nikkitha.nikki96/forecasting-at-scale-with-foundation-models-a-complete-guide-891ed8cdd056?postPublishedType=repub)
+Blog: [Forecasting at Scale With Foundation Models: A Practical Guide](https://medium.com/@rameshnikkitha/forecasting-at-scale-with-foundation-models-a-complete-guide-891ed8cdd056)
 
 ---
 
